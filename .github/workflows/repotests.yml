@@ -437,6 +437,11 @@ jobs:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
         with:
           persist-credentials: false
+          repository: 'AppThreat/multi-demangle'
+          path: 'repotests/multi-demangle'
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
           repository: 'googleprojectzero/Jackalope'
           path: 'repotests/Jackalope'
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
@@ -657,6 +662,10 @@ jobs:
       - name: repotests impacket
         run: |
           bin/cdxgen.js -t python repotests/impacket -o bomresults/impacket.json --fail-on-error --bom-audit
+        shell: bash
+      - name: repotests multi-demangle (maturin)
+        run: |
+          bin/cdxgen.js -t python repotests/multi-demangle -o bomresults/bom-multi-demangle.json --fail-on-error
         shell: bash
 #      - name: repotests pixi
 #        run: |
